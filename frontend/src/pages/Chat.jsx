@@ -78,7 +78,7 @@ const Chat = () => {
   };
 
   return (
-    <div className="flex flex-col h-[calc(100vh-4rem)] bg-white dark:bg-gray-900">
+    <div className="flex flex-col h-[calc(100vh-4rem)] bg-white dark:bg-black">
       {/* Header */}
       <div className="px-6 py-3 border-b border-gray-100 dark:border-gray-800 flex items-center justify-between">
       <p className="text-sm text-gray-500 dark:text-gray-400">
@@ -86,10 +86,10 @@ const Chat = () => {
       </p>
       <button
         onClick={handleEndConversation}
-        className="text-xs font-medium px-3 py-1.5 rounded-lg bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 hover:bg-red-100 dark:hover:bg-red-900/40 transition"
+        className="text-xs font-medium px-3 py-1.5 rounded-lg border border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition"
       >
         End Conversation
-    </button>
+      </button>
     </div>
 
       {/* Messages */}

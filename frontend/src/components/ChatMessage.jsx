@@ -18,7 +18,7 @@ const ChatMessage = ({ role, content, sources }) => {
         className={`max-w-[75%] rounded-2xl px-4 py-3 ${
           isUser
             ? 'bg-indigo-600 text-white rounded-br-sm'
-            : 'bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded-bl-sm'
+            : 'bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 rounded-bl-sm'
         }`}
       >
         <div className="prose prose-sm dark:prose-invert max-w-none prose-p:my-1 prose-pre:my-2">

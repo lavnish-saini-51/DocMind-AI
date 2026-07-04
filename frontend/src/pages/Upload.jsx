@@ -35,8 +35,8 @@ const Upload = () => {
       return;
     }
 
-    if (file.size > 10 * 1024 * 1024) {
-      toast.error('File size must be under 10MB');
+    if (file.size > 150 * 1024 * 1024) {
+      toast.error('File size must be under 150MB');
       return;
     }
 
@@ -78,13 +78,13 @@ const Upload = () => {
   const Icon = selectedFile ? getFileIcon(selectedFile.type) : UploadCloud;
 
   return (
-    <div className="min-h-[calc(100vh-4rem)] flex items-center justify-center bg-gray-50 dark:bg-gray-900 px-4">
+    <div className="min-h-[calc(100vh-4rem)] flex items-center justify-center bg-gray-50 dark:bg-black px-4">
       <div className="w-full max-w-lg">
         <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-1 text-center">
           Upload your document
         </h1>
         <p className="text-gray-500 dark:text-gray-400 mb-8 text-center">
-          PDF, Image, or Resume — max 10MB
+          PDF, Image, or Resume — max 150MB
         </p>
 
         <div
@@ -96,7 +96,7 @@ const Upload = () => {
           onDrop={handleDrop}
           onClick={() => !selectedFile && inputRef.current?.click()}
           className={`relative rounded-2xl border-2 border-dashed p-10 flex flex-col items-center justify-center text-center transition-all cursor-pointer
-            ${isDragging ? 'border-indigo-500 bg-indigo-50 dark:bg-indigo-900/20' : 'border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800'}
+            ${isDragging ? 'border-indigo-500 bg-indigo-50 dark:bg-indigo-900/20' : 'border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900'}
           `}
         >
           <input

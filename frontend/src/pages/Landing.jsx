@@ -36,7 +36,7 @@ const Landing = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-950">
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-black dark:to-black">
       {/* Hero Section */}
       <section className="max-w-5xl mx-auto px-6 pt-24 pb-16 text-center">
         <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 dark:text-white tracking-tight">

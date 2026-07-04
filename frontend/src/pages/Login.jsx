@@ -34,8 +34,8 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-900 px-4">
-      <div className="w-full max-w-md bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8">
+    <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-black px-4">
+      <div className="w-full max-w-md bg-white dark:bg-gray-900 rounded-2xl shadow-xl p-8">
         <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-1">Welcome back</h1>
         <p className="text-gray-500 dark:text-gray-400 mb-6">Log in to continue to DocMind AI</p>
 
