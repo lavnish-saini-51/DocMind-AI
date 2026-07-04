@@ -1,4 +1,4 @@
-const { RecursiveCharacterTextSplitter } = require('langchain/text_splitter');
+const { RecursiveCharacterTextSplitter } = require('@langchain/textsplitters');
 const { FaissStore } = require('@langchain/community/vectorstores/faiss');
 const { Document } = require('@langchain/core/documents');
 const { getEmbeddingsModel } = require('./embeddingService');

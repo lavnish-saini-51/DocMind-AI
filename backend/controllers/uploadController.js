@@ -2,8 +2,10 @@ const asyncHandler = require('express-async-handler');
 const Session = require('../models/Session');
 const { setSession, getSession, deleteSession } = require('../services/sessionStore');
 const { getFileCategory } = require('../utils/fileTypeHelper');
+const { extractText } = require('../services/textExtractionService');
+const { chunkText, buildVectorStore } = require('../services/ragService');
 
-// @desc    Upload a document (PDF/Image/Resume) — replaces any existing session
+// @desc    Upload a document (PDF/Image/Resume), extract text, and build in-memory RAG index
 // @route   POST /api/upload
 // @access  Private
 const uploadFile = asyncHandler(async (req, res) => {
@@ -20,20 +22,30 @@ const uploadFile = asyncHandler(async (req, res) => {
 
   const userId = req.user._id;
 
-  // If a previous session exists, wipe its in-memory data first (embeddings, buffer, chat)
+  // Wipe any previous session (embeddings, buffer, chat history) before processing new file
   const existingSession = getSession(userId);
   if (existingSession) {
     deleteSession(userId);
   }
 
-  // Store raw file buffer in RAM only — embeddings/vectorStore added later in RAG step
+  // Extract raw text based on file type
+  const rawText = await extractText(req.file.buffer, fileCategory, req.file.mimetype);
+
+  if (!rawText || rawText.trim().length === 0) {
+    res.status(400);
+    throw new Error('Could not extract any text from this file');
+  }
+
+  // Chunk text and build in-memory FAISS vector store (RAM only)
+  const documents = await chunkText(rawText, req.file.originalname);
+  const vectorStore = await buildVectorStore(documents);
+
+  // Store everything in RAM — never written to disk or MongoDB
   setSession(userId, {
     fileName: req.file.originalname,
     fileType: fileCategory,
-    fileBuffer: req.file.buffer,
     mimetype: req.file.mimetype,
-    embeddings: null,
-    vectorStore: null,
+    vectorStore,
     chatHistory: [],
     createdAt: Date.now(),
   });
@@ -52,7 +64,7 @@ const uploadFile = asyncHandler(async (req, res) => {
 
   res.status(200).json({
     success: true,
-    message: 'File uploaded successfully',
+    message: 'File processed and ready for chat',
     file: {
       name: req.file.originalname,
       type: fileCategory,

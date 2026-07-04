@@ -4,6 +4,7 @@ import Landing from './pages/Landing';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Upload from './pages/Upload';
+import Chat from './pages/Chat';
 import ProtectedRoute from './components/ProtectedRoute';
 
 function App() {
@@ -19,6 +20,14 @@ function App() {
           element={
             <ProtectedRoute>
               <Upload />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/chat"
+          element={
+            <ProtectedRoute>
+              <Chat />
             </ProtectedRoute>
           }
         />

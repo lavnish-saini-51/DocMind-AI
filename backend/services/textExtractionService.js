@@ -1,11 +1,12 @@
-const pdfParse = require('pdf-parse');
+const { PDFParse } = require('pdf-parse');
 const mammoth = require('mammoth');
 const Tesseract = require('tesseract.js');
 
 // Extracts raw text from a PDF buffer
 const extractFromPDF = async (buffer) => {
-  const data = await pdfParse(buffer);
-  return data.text;
+  const parser = new PDFParse({ data: buffer });
+  const result = await parser.getText();
+  return result.text;
 };
 
 // Extracts raw text from a DOC/DOCX buffer (resume)
