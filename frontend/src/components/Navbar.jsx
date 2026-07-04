@@ -1,5 +1,5 @@
 import { Link, useNavigate } from 'react-router-dom';
-import { Brain } from 'lucide-react';
+import Logo from './Logo';
 import { useAuth } from '../context/AuthContext';
 import toast from 'react-hot-toast';
 import { Sun, Moon } from 'lucide-react';
@@ -21,7 +21,7 @@ const Navbar = () => {
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2">
           <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-600 to-purple-600 flex items-center justify-center">
-            <Brain className="w-5 h-5 text-white" />
+            <Logo className="w-4.5 h-4.5" />
           </div>
           <span className="text-lg font-bold text-gray-900 dark:text-white">
             DocMind AI
