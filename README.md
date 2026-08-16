@@ -30,23 +30,86 @@ A privacy-first AI document assistant. Upload a PDF, image, or resume and chat w
 ## Project Structure
 
 DocMind-AI/
+│
 ├── backend/
-│   ├── config/          # Database connection
-│   ├── controllers/     # Route logic
-│   ├── middleware/      # Auth, upload, error handling
-│   ├── models/          # Mongoose schemas
-│   ├── routes/          # API routes
-│   ├── services/        # RAG pipeline, embeddings, LLM, session store
-│   ├── utils/           # Helper functions
+│   ├── config/
+│   │   └── db.js
+│   │
+│   ├── controllers/
+│   │   ├── authController.js
+│   │   ├── uploadController.js
+│   │   ├── chatController.js
+│   │   └── sessionController.js
+│   │
+│   ├── middleware/
+│   │   ├── authMiddleware.js
+│   │   ├── uploadMiddleware.js
+│   │   └── errorMiddleware.js
+│   │
+│   ├── models/
+│   │   ├── User.js
+│   │   └── Session.js
+│   │
+│   ├── routes/
+│   │   ├── authRoutes.js
+│   │   ├── uploadRoutes.js
+│   │   ├── chatRoutes.js
+│   │   └── sessionRoutes.js
+│   │
+│   ├── services/
+│   │   ├── sessionStore.js
+│   │   ├── embeddingService.js
+│   │   ├── llmService.js
+│   │   ├── textExtractionService.js
+│   │   └── ragService.js
+│   │
+│   ├── utils/
+│   │   ├── generateToken.js
+│   │   └── fileTypeHelper.js
+│   │
+│   ├── uploads/            (empty — never actually used, since files stay in-memory)
+│   ├── .env
+│   ├── .gitignore
+│   ├── package.json
 │   └── server.js
+│
 └── frontend/
-├── src/
-│   ├── components/  # Reusable UI components
-│   ├── context/     # Auth & Theme context
-│   ├── pages/       # Landing, Login, Signup, Upload, Chat
-│   ├── services/    # API service layer
-│   └── App.jsx
-└── index.html
+    ├── src/
+    │   ├── components/
+    │   │   ├── Navbar.jsx
+    │   │   ├── Footer.jsx
+    │   │   ├── Logo.jsx
+    │   │   ├── ChatMessage.jsx
+    │   │   └── ProtectedRoute.jsx
+    │   │
+    │   ├── context/
+    │   │   ├── AuthContext.jsx
+    │   │   └── ThemeContext.jsx
+    │   │
+    │   ├── pages/
+    │   │   ├── Landing.jsx
+    │   │   ├── Login.jsx
+    │   │   ├── Signup.jsx
+    │   │   ├── Upload.jsx
+    │   │   └── Chat.jsx
+    │   │
+    │   ├── services/
+    │   │   ├── api.js
+    │   │   ├── authService.js       
+    │   │   ├── uploadService.js
+    │   │   ├── chatService.js
+    │   │   └── sessionService.js
+    │   │
+    │   ├── App.jsx
+    │   ├── main.jsx
+    │   └── index.css
+    │
+    ├── .env
+    ├── vercel.json
+    ├── tailwind.config.js
+    ├── postcss.config.js
+    ├── package.json
+    └── index.html
 
 
 ## Getting Started With Project
