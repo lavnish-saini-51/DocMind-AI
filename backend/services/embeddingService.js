@@ -1,11 +1,11 @@
-const { HuggingFaceInferenceEmbeddings } = require('@langchain/community/embeddings/hf');
+const { GoogleGenerativeAIEmbeddings } = require('@langchain/google-genai');
 
-// Wraps Hugging Face's embedding model via LangChain's embeddings interface
-// Model: sentence-transformers/all-MiniLM-L6-v2 — fast, lightweight, good for RAG
+// Gemini embedding model via LangChain's embeddings interface
+// Uses the same GEMINI_API_KEY already configured for the LLM
 const getEmbeddingsModel = () => {
-  return new HuggingFaceInferenceEmbeddings({
-    apiKey: process.env.HUGGINGFACE_API_KEY,
-    model: 'sentence-transformers/all-MiniLM-L6-v2',
+  return new GoogleGenerativeAIEmbeddings({
+    apiKey: process.env.GEMINI_API_KEY,
+    model: 'gemini-embedding-001',
   });
 };
 
