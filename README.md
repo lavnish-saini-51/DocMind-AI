@@ -21,8 +21,8 @@ A privacy-first AI document assistant. Upload a PDF, image, or resume and chat w
 **Database:** MongoDB (stores only users & minimal session metadata — never embeddings)
 
 **AI:**
-- Embeddings — Hugging Face Inference API (`sentence-transformers/all-MiniLM-L6-v2`)
-- LLM — Google Gemini API (`gemini-1.5-flash`)
+- Embeddings — gemini embedding model (gemini-embedding-001)
+- LLM — Google Gemini API (`gemini-3.8-flash`)
 - Vector Store — FAISS (in-memory, RAM only)
 
 **Deployment:** Vercel (frontend), Render (backend)
